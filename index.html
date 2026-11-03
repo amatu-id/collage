@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<script src="/amatu.js"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>Kolase</title>
+<meta name="description" content="Kolase — buat kolase foto dengan puluhan tata letak, unggah/tempel foto ke bingkai kosong, dan susun banyak foto otomatis memenuhi kertas A4 tanpa ruang kosong.">
+<meta name="theme-color" content="#16161a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c3aed'/%3E%3Crect x='6' y='6' width='11' height='20' rx='2' fill='%23fff'/%3E%3Crect x='19' y='6' width='7' height='9' rx='2' fill='%23fbbf24'/%3E%3Crect x='19' y='17' width='7' height='9' rx='2' fill='%2338bdf8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Oswald:wght@400;700&family=Bebas+Neue&family=Pacifico&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Caveat:wght@400;700&family=Lobster&family=Permanent+Marker&display=swap">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div id="app">
+  <section id="gallery">
+    <header class="g-head">
+      <div class="brand"><span class="logo"></span><div><b>Kolase</b><small>Kolase foto · cetak banyak foto ke A4</small></div></div>
+      <div class="sp"></div>
+      <button class="ib" id="gTheme" title="Tema"></button>
+      <button class="btn primary" id="gNew"></button>
+    </header>
+    <div class="hero" id="hero">
+      <div class="hero-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="hero-tx">
+        <h2>Seret banyak foto ke sini</h2>
+        <p>Foto langsung ditata otomatis memenuhi kertas <b>A4</b> — rapi, tanpa ruang kosong, bisa menjadi beberapa halaman. Setelah itu tinggal atur, cetak, atau simpan sebagai PDF.</p>
+        <div class="row"><button class="btn primary lg" id="heroPick"></button><button class="btn lg" id="heroPaste"></button></div>
+        <small class="mut">JPG · PNG · WEBP · HEIC (Safari) — atau tekan Ctrl/⌘+V untuk menempel</small>
+      </div>
+    </div>
+    <h3 class="g-title">Mulai kolase baru</h3>
+    <div class="g-quick" id="gQuick"></div>
+    <h3 class="g-title">Proyek saya</h3>
+    <div class="g-grid" id="gGrid"></div>
+  </section>
+
+  <section id="editor" hidden>
+    <header id="top">
+      <button class="ib" id="bBack" title="Semua proyek"></button>
+      <input id="pName" spellcheck="false" aria-label="Nama proyek">
+      <div class="sp"></div>
+      <button class="ib" id="bUndo" title="Urungkan (Ctrl+Z)"></button>
+      <button class="ib" id="bRedo" title="Ulangi (Ctrl+Shift+Z)"></button>
+      <div class="zoom hide-s"><button class="ib sm" id="bZo" title="Perkecil"></button><button class="zv" id="bZv" title="Pas layar">100%</button><button class="ib sm" id="bZi" title="Perbesar"></button></div>
+      <button class="ib" id="bTheme" title="Tema"></button>
+      <button class="btn hide-s" id="bPrint"></button>
+      <button class="btn primary" id="bExport"></button>
+    </header>
+    <div id="body">
+      <nav id="rail"></nav>
+      <aside id="side"><div class="side-h"><b id="sideTitle"></b><div class="sp"></div><button class="ib sm" id="sideClose" title="Tutup"></button></div><div id="panel"></div></aside>
+      <main id="stage"><div id="pages"></div></main>
+    </div>
+    <div id="ctb" hidden></div>
+  </section>
+</div>
+<div id="drop" hidden><div><span></span><b>Lepaskan foto</b><small id="dropHint"></small></div></div>
+<div id="toast"></div>
+<div id="modal" hidden></div>
+<div id="busy" hidden><div><span class="spin"></span><b id="busyT">Memproses…</b></div></div>
+<input type="file" id="file" accept="image/*" multiple hidden>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
